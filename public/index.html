@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeAlpha Project Management Tool</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div id="toast"></div>
+
+  <section id="authView" class="auth-shell">
+    <div class="auth-card">
+      <div class="brand">CodeAlpha PM</div>
+      <h1>Project Management Tool</h1>
+      <p class="muted">Create projects, assign tasks, and collaborate with your team.</p>
+
+      <div class="tabs">
+        <button class="tab active" data-mode="login">Login</button>
+        <button class="tab" data-mode="register">Register</button>
+      </div>
+
+      <form id="authForm">
+        <div id="nameWrap" class="hidden">
+          <label>Name</label>
+          <input id="name" placeholder="Your name">
+        </div>
+        <label>Username</label>
+        <input id="username" required placeholder="username">
+        <label>Password</label>
+        <input id="password" type="password" required placeholder="Minimum 6 characters">
+        <button class="primary" type="submit" id="authSubmit">Login</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="appView" class="app-shell hidden">
+    <header class="topbar">
+      <div>
+        <div class="brand">CodeAlpha PM</div>
+        <span class="muted">Project Management Tool</span>
+      </div>
+      <div class="userbar">
+        <span id="currentUser"></span>
+        <button id="logoutBtn" class="secondary">Logout</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="sidebar">
+        <div class="side-head">
+          <h2>Projects</h2>
+          <button id="newProjectBtn" class="icon-btn">+</button>
+        </div>
+        <div id="projectList"></div>
+      </aside>
+
+      <section class="content">
+        <div id="emptyState" class="empty">
+          <h2>Create your first project</h2>
+          <p>Create a group project and start adding tasks.</p>
+          <button id="emptyNewProject" class="primary">New Project</button>
+        </div>
+
+        <div id="projectView" class="hidden">
+          <div class="project-header">
+            <div>
+              <p class="eyebrow">PROJECT BOARD</p>
+              <h1 id="projectName"></h1>
+              <p id="projectDescription" class="muted"></p>
+            </div>
+            <button id="addMemberBtn" class="secondary">+ Add Member</button>
+          </div>
+
+          <div class="board-actions">
+            <button id="newTaskBtn" class="primary">+ New Task</button>
+            <span id="memberSummary" class="muted"></span>
+          </div>
+
+          <div class="board" id="board">
+            <div class="column">
+              <div class="column-title"><span>To Do</span><span id="todoCount">0</span></div>
+              <div id="todoCol" class="task-list"></div>
+            </div>
+            <div class="column">
+              <div class="column-title"><span>In Progress</span><span id="progressCount">0</span></div>
+              <div id="progressCol" class="task-list"></div>
+            </div>
+            <div class="column">
+              <div class="column-title"><span>Done</span><span id="doneCount">0</span></div>
+              <div id="doneCol" class="task-list"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </section>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-card">
+      <button id="closeModal" class="close">×</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
